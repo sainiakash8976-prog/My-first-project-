@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TypeMaster - Smart Typing Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">⌨ TypeMaster</div>
+    <span>Smart Typing Skill Analyzer</span>
+</header>
+
+<main class="container">
+
+    <!-- HOME SECTION -->
+    <section class="hero">
+        <span class="tag">IMPROVE YOUR DIGITAL SKILLS</span>
+        <h1>Discover Your <span>Typing Speed</span></h1>
+        <p>Test your typing skills, analyze your performance and
+           discover how to become a better typist.</p>
+    </section>
+
+    <!-- REGISTRATION -->
+    <section class="card" id="registration">
+
+        <h2>Welcome to TypeMaster!</h2>
+        <p class="muted">Please enter your details to begin.</p>
+
+        <form id="userForm">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name"
+                   placeholder="Enter your full name"
+                   maxlength="50" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age"
+                   placeholder="Enter your age"
+                   min="5" max="100" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email"
+                   placeholder="Enter your email" required>
+
+            <label for="occupation">What are you doing?</label>
+            <select id="occupation" required>
+                <option value="">Select your role</option>
+                <option>School Student</option>
+                <option>College Student</option>
+                <option>Teacher</option>
+                <option>Working Professional</option>
+                <option>Freelancer</option>
+                <option>Other</option>
+            </select>
+
+            <button class="primary-btn" type="submit">
+                Continue to Typing Test →
+            </button>
+
+        </form>
+
+        <p class="small-note">
+            Your information stays in this browser session.
+        </p>
+
+    </section>
+
+    <!-- TEST SECTION -->
+    <section class="card hidden" id="testSection">
+
+        <div class="user-heading">
+            <div>
+                <p class="muted">WELCOME</p>
+                <h2 id="welcomeName">Student</h2>
+                <p id="welcomeRole" class="muted"></p>
+            </div>
+            <span class="badge">ACTIVE TEST</span>
+        </div>
+
+        <div class="settings">
+
+            <div>
+                <label for="difficulty">Difficulty Level</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="duration">Test Duration</label>
+                <select id="duration">
+                    <option value="30">30 Seconds</option>
+                    <option value="60" selected>60 Seconds</option>
+                    <option value="120">120 Seconds</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- STATISTICS -->
+        <div class="stats">
+
+            <div class="stat">
+                <p>Typing Speed</p>
+                <h2 id="wpm">0</h2>
+                <small>WPM</small>
+            </div>
+
+            <div class="stat">
+                <p>Accuracy</p>
+                <h2 id="accuracy">100%</h2>
+            </div>
+
+            <div class="stat">
+                <p>Time Left</p>
+                <h2 id="time">60</h2>
+                <small>Seconds</small>
+            </div>
+
+            <div class="stat">
+                <p>Errors</p>
+                <h2 id="errors">0</h2>
+            </div>
+
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-info">
+            <span>Typing Progress</span>
+            <span id="progressText">0%</span>
+        </div>
+
+        <div class="progress-track">
+            <div id="progressBar"></div>
+        </div>
+
+        <!-- PASSAGE -->
+        <div class="challenge">
+
+            <div class="challenge-heading">
+                <h3>Your Typing Passage</h3>
+                <span id="levelBadge">MEDIUM</span>
+            </div>
+
+            <div id="passage" class="passage"></div>
+
+            <textarea id="typingInput"
+                placeholder="Click Start Test and type the passage here..."
+                disabled spellcheck="false"></textarea>
+
+            <div class="button-row">
+
+                <button id="startBtn" class="primary-btn">
+                    Start Test
+                </button>
+
+                <button id="restartBtn" class="secondary-btn">
+                    Restart
+                </button>
+
+                <button id="newBtn" class="secondary-btn">
+                    New Passage
+                </button>
+
+            </div>
+
+        </div>
+
+        <button id="changeUser" class="text-btn">
+            ← Change User
+        </button>
+
+    </section>
+
+    <!-- RESULT SECTION -->
+    <section class="card hidden" id="resultSection">
+
+        <div class="trophy">🏆</div>
+
+        <h2 class="center">Your Performance Report</h2>
+
+        <p class="muted center" id="resultName"></p>
+
+        <div class="result-grid">
+
+            <div class="result-box">
+                <p>Typing Speed</p>
+                <h2 id="finalWpm">0 WPM</h2>
+            </div>
+
+            <div class="result-box">
+                <p>Accuracy</p>
+                <h2 id="finalAccuracy">0%</h2>
+            </div>
+
+            <div class="result-box">
+                <p>Typing Errors</p>
+                <h2 id="finalErrors">0</h2>
+            </div>
+
+            <div class="result-box">
+                <p>Correct Characters</p>
+                <h2 id="finalCorrect">0</h2>
+            </div>
+
+        </div>
+
+        <div class="feedback">
+
+            <h3 id="performanceTitle">Good Work!</h3>
+
+            <p id="performanceMessage"></p>
+
+            <h3>Personalized Improvement Suggestions</h3>
+
+            <ul id="tipsList"></ul>
+
+        </div>
+
+        <button id="againBtn" class="primary-btn full-btn">
+            Take Another Test ↻
+        </button>
+
+        <button id="homeBtn" class="secondary-btn full-btn">
+            Back to Home
+        </button>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 TypeMaster | Learn • Practice • Improve</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
